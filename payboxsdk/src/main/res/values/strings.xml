@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PayBoxSdk</string>
+    <string name="internet_error_description">{\"pg_error_description\":\"Ошибка соединения\"}</string>
+    <string name="error_connection">Ошибка соединения</string>
+    <string name="operation_failure">Операция прошла неуспешно</string>
+    <string name="operation_failure_json">{\"pg_error_description\":\"Операция прошла неуспешно\"}</string>
+    <string name="card_not_found">Карты не найдены</string>
+    <string name="card_not_found_json">{\"pg_error_description\":\"Карты не найдены\"}</string>
+</resources>
