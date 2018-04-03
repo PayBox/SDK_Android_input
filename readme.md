@@ -17,7 +17,7 @@ PayBox SDK Android - это библиотека позволяющая упро
 
 **Установка:**
 
-1. Скачиваете библиотеку (PayBoxSdk.aar)
+1. Скачиваете библиотеку [PayBoxSdk.aar](https://github.com/PayBox/SDK_Android_input/releases/download/1.0.1_input/payboxsdk.aar)
 2. В Android Studio -&gt; File -&gt; New -&gt; New Module -&gt; Import .jar/.aar Package -&gt; Next, далее в поле File Name указываете путь к файлу
 <br><br><br><br>
 **Инициализация SDK:**
