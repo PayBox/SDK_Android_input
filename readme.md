@@ -91,7 +91,7 @@ PayBox SDK Android - это библиотека позволяющая упро
         PBCard.getSdk().removePbListener(this);
 
 
-**Для инициализации платежа** (при инициализации с параметром &quot;builder.enableRecurring(int)&quot;, карты сохраняются в системе PayBox):
+**Для инициализации платежа** (при инициализации с параметром &quot;PBHelper.getSdk().enableRecurring(int)&quot;, карты сохраняются в системе PayBox):
 
         PBHelper.getSdk().initNewPayment(orderId, userId, amount, description);
 
