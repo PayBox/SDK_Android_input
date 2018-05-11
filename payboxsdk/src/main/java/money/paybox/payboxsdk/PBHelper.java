@@ -371,12 +371,18 @@ public class PBHelper implements PBResultReceiver.Receiver{
         for (Map.Entry<String,String> entry : param.entrySet()){
             url += entry.getKey()+"="+entry.getValue()+"&";
         }
+        Constants.logMessage("url "+Constants.PB_CARDPAY_MERCHANT(configuration.getMERCHANT_ID()).concat(Constants.PB_CARDPAY)+"?"+url);
         WebActivity.startWebActivity(context,Constants.PB_CARDPAY_MERCHANT(configuration.getMERCHANT_ID()).concat(Constants.PB_CARDPAY)+"?"+url, OPERATION.CARDPAY);
     }
-    public void initCardPayment(int amount, int userId, int cardId, String orderId, String description){
+    public void initCardPayment(int amount, String userId, int cardId, String orderId, String description){//TODO userId
         HashMap<String, String> param = defParams();
         param.put(Constants.AMOUNT, String.valueOf(amount));
-        param.put(Constants.PB_USER_ID, String.valueOf(userId));
+        param.put(Constants.SUCCESS_URL, configuration.successUrl);
+        param.put(Constants.FAILURE_URL, configuration.failureUrl);
+        if(configuration.getRESULT_URL()!=null) {
+            param.put(Constants.RESULT_URL, configuration.getRESULT_URL());
+        }
+        param.put(Constants.PB_USER_ID, userId);
         param.put(Constants.PB_CARD_ID, String.valueOf(cardId));
         param.put(Constants.DESCRIPTION, description);
         if(!TextUtils.isEmpty(orderId)){
@@ -384,20 +390,20 @@ public class PBHelper implements PBResultReceiver.Receiver{
         }
         init(param, OPERATION.CARDPAYINIT);
     }
-    public void removeCard(int userId, int cardId){
+    public void removeCard(String userId, int cardId){
         HashMap<String, String> param = defParams();
-        param.put(Constants.PB_USER_ID, String.valueOf(userId));
+        param.put(Constants.PB_USER_ID, userId);
         param.put(Constants.PB_CARD_ID, String.valueOf(cardId));
         init(param, OPERATION.CARDREMOVE);
     }
-    public void getCards(int userId){
+    public void getCards(String userId){
         HashMap<String, String> param = defParams();
-        param.put(Constants.PB_USER_ID, String.valueOf(userId));
+        param.put(Constants.PB_USER_ID, userId);
         init(param, OPERATION.CARDLIST);
     }
-    public void addCard(int userId, @NonNull String postUrl){
+    public void addCard(String userId, @NonNull String postUrl){
         HashMap<String, String> param = defParams();
-        param.put(Constants.PB_USER_ID, String.valueOf(userId));
+        param.put(Constants.PB_USER_ID, userId);
         if(!TextUtils.isEmpty(postUrl)){
             param.put(Constants.PB_POST_URL, postUrl);
         }
@@ -408,7 +414,6 @@ public class PBHelper implements PBResultReceiver.Receiver{
         HashMap<String, String> param = configuration.toMiniMap();
         param.put(Constants.AMOUNT, String.valueOf(amount));
         param.put(Constants.PB_RECURRING_PROFILE, recuringProfile);
-        param.put(Constants.PB_USER_ID, "33");
         if (!TextUtils.isEmpty(orderId)){
             param.put(Constants.ORDER_ID, orderId);
         }
@@ -438,12 +443,12 @@ public class PBHelper implements PBResultReceiver.Receiver{
     }
 
 
-    public void initNewPayment(String orderId, int userId, @NonNull int amount, @NonNull String description){
+    public void initNewPayment(String orderId, String userId, @NonNull int amount, @NonNull String description){
         HashMap<String,String> param = configuration.toHashMap();
         if(orderId!=null){
             param.put(Constants.ORDER_ID,orderId);
         }
-        param.put(Constants.PB_USER_ID, String.valueOf(userId));
+        param.put(Constants.PB_USER_ID, userId);
         param.put(Constants.AMOUNT,String.valueOf(amount));
         param.put(Constants.DESCRIPTION,description);
         init(param, OPERATION.PAYMENT);
@@ -452,7 +457,7 @@ public class PBHelper implements PBResultReceiver.Receiver{
 
     private void init(HashMap<String,String> param, OPERATION operation){
         param.put(Constants.SALT, Long.toHexString(Double.doubleToLongBits(Math.random())));
-            ServerHelper.startPBConnection(context, operation, resultReceiver, param, configuration.getSECRET_KEY());
+        ServerHelper.startPBConnection(context, operation, resultReceiver, param, configuration.getSECRET_KEY());
     }
 
 

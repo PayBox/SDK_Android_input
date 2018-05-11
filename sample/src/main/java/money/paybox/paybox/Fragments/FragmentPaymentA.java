@@ -78,7 +78,7 @@ public class FragmentPaymentA extends BaseFragment {
             } else {
                 PBHelper.getSdk().disableRecurring();
             }
-            PBHelper.getSdk().initNewPayment(null,intET(payUserId),intET(payAmount),strET(payComment));
+            PBHelper.getSdk().initNewPayment(null,strET(payUserId),intET(payAmount),strET(payComment));
         }
     }
     @OnClick(R.id.cancel)

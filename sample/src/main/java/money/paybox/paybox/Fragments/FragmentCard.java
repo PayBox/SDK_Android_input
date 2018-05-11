@@ -70,26 +70,26 @@ public class FragmentCard extends BaseFragment {
     @OnClick(R.id.addCard)
     public void initAdd(){
         if(!isEmpty(cardAddUserId)){
-            PBHelper.getSdk().addCard(intET(cardAddUserId),"postUrl");
+            PBHelper.getSdk().addCard(strET(cardAddUserId),"https://demo.swift.kg/paybox/payment_result/");
         }
     }
     @OnClick(R.id.remCard)
     public void initRemove(){
         if(!isEmpty(remCardUserId)&&!isEmpty(remCardId)){
-            PBHelper.getSdk().removeCard(intET(remCardUserId),intET(remCardId));
+            PBHelper.getSdk().removeCard(strET(remCardUserId),intET(remCardId));
         }
     }
 
     @OnClick(R.id.showCard)
     public void showCard(){
         if(!isEmpty(showCardUserId)){
-            PBHelper.getSdk().getCards(intET(showCardUserId));
+            PBHelper.getSdk().getCards(strET(showCardUserId));
         }
     }
     @OnClick(R.id.cardPayInit)
     public void initCardPay(){
         if(!isEmpty(cardPayAmount)&&!isEmpty(cardPayId)&&!isEmpty(cardUserId)&&!isEmpty(cardPayDescription)&&!isEmpty(cardOrderId)){
-            PBHelper.getSdk().initCardPayment(intET(cardPayAmount),intET(cardUserId),intET(cardPayId),strET(cardOrderId),strET(cardPayDescription));
+            PBHelper.getSdk().initCardPayment(intET(cardPayAmount),strET(cardUserId),intET(cardPayId),strET(cardOrderId),strET(cardPayDescription));
         }
     }
 

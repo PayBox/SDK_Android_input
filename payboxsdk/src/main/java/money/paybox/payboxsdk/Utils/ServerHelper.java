@@ -6,7 +6,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,12 +14,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -140,18 +137,29 @@ public class ServerHelper extends IntentService {
             } else {
                 result.append("&");
             }
+
             result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             result.append("=");
             result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
 
         }
+        Constants.logMessage("request "+result.toString());
         return result.toString();
     }
+
+
     private void connectToPB(Constants.PBREQUEST_METHOD method, String url, HashMap<String,String> bodys, HashMap<String,String> parameters){
         try {
             String response = "";
             URL urlCon = new URL(url);
-            HttpURLConnection connection = (HttpURLConnection)urlCon.openConnection();
+//            SSLContext sslContext = SSLContext.getInstance("TLSv1.1");
+//            sslContext.init(null,null,null);
+//            SSLSocketFactory sslSocketFactory = null;
+            //TODO TLS
+
+            HttpsURLConnection.setDefaultSSLSocketFactory(new TLSSocketFactory());
+            HttpsURLConnection connection = (HttpsURLConnection)urlCon.openConnection();
+
             connection.setConnectTimeout(25000);
             connection.setReadTimeout(25000);
             connection.setRequestMethod("POST");
@@ -185,6 +193,7 @@ public class ServerHelper extends IntentService {
                 connection.disconnect();
             }
         } catch (Exception e) {
+            e.printStackTrace();
             receiver.send(PBResultReceiver.STATUS_ERROR, Bundle.EMPTY);
         }
     }
@@ -192,7 +201,7 @@ public class ServerHelper extends IntentService {
     private void responceResolver(String response) throws Exception{
         Bundle bundle = new Bundle();
         bundle.putString(RESPONSE, response);
-        
+        Constants.logMessage(response);
         switch (operation){
             case PAYMENT:
                 receiver.send(PBResultReceiver.STATUS_PAYMENT_LOADED,bundle);

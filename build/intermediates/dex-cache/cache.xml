@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\am\Desktop\PayBox Projects\PayBox\payboxsdk\build\intermediates\intermediate-jars\release\classes.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d6df78411235a80ff71410907c1cc88f35237fe3">
+        <dex dex="C:\Users\am\Desktop\PayBox Projects\PayBox\sample\build\intermediates\transforms\preDex\release\19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\am\Desktop\PayBox Projects\PayBox\payboxsdk\libs\json.jar"
+        jumboMode="false"
+        min-sdk-version="19"
+        optimize="true"
+        revision="26.0.2"
+        sha1="36ced462c97f0845b4a7b266a25cebe95d18baa3">
+        <dex dex="C:\Users\am\Desktop\PayBox Projects\PayBox\sample\build\intermediates\transforms\preDex\release\1.jar" />
+    </item>
+
+</items>

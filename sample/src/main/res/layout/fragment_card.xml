@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:paddingLeft="10dp"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:hint="user ID"
                     android:imeOptions="actionDone"
                     android:layout_marginTop="10dp"
@@ -79,7 +79,7 @@
                     android:layout_marginTop="5dp"
                     android:hint="user ID"
                     android:imeOptions="actionDone"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingLeft="10dp" />
 
                 <Button
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:paddingLeft="10dp"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:hint="user ID"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="5dp"/>
@@ -197,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:paddingLeft="10dp"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:hint="user ID"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="5dp"/>

@@ -2,11 +2,16 @@ package money.paybox.payboxsdk.UI;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.http.SslError;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import money.paybox.payboxsdk.PBHelper;
@@ -70,13 +75,20 @@ public class WebActivity extends AppCompatActivity {
 
 
     private class SdkWebView extends WebViewClient {
+
+
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
+            Constants.logMessage("redirect "+url);
             switch (webCommand){
                 case CARDPAY:
-                    if(url.equals(Constants.PB_URL)){
+                    Constants.logMessage("redirect "+url);
+                    if(url.contains(Constants.SUCCESS)){
                         PBHelper.getSdk().webSubmited(true, webCommand);
+                        finish();
+                    } else
+                    if (url.contains(Constants.FAILURE)){
+                        PBHelper.getSdk().webSubmited(false, webCommand);
                         finish();
                     }
                     pbsdk_web.loadUrl(url);
@@ -85,7 +97,7 @@ public class WebActivity extends AppCompatActivity {
                     if(url.contains(Constants.SUCCESS)){
                         PBHelper.getSdk().webSubmited(true, webCommand);
                         finish();
-                    }
+                    } else
                     if(url.contains(Constants.FAILURE)){
                         PBHelper.getSdk().webSubmited(false, webCommand);
                         finish();
@@ -94,7 +106,6 @@ public class WebActivity extends AppCompatActivity {
                     break;
                 case PAYMENT:
                     if(url.contains(customer)){
-                        Log.d("AAA","redirect customer"+url);
                         pbsdk_web.loadUrl(url);
                     }
                     if(url.contains(Constants.SUCCESS)){

@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class Constants {
     public static final String PB_URL = "http://paybox.money/";
-    public static final String PB_MAIN = "https://paybox.kz/";
+    public static final String PB_MAIN = "https://api.paybox.money/";
     public static final String PB_ENTRY_URL = "init_payment.php";
     public static final String PB_STATUS_URL = "get_status.php";
     public static final String PB_REVOKE_URL = "revoke.php";
@@ -123,4 +123,7 @@ public class Constants {
     public static final String SALT = "pg_salt"; //NOT NULL
     public static final String SIG = "pg_sig"; //NOT NULL
 
+    public static void logMessage(String message){
+        Log.i("AAA",message);
+    }
 }
