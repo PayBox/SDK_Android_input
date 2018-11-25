@@ -17,9 +17,20 @@ PayBox SDK Android - это библиотека позволяющая упро
 
 **Установка:**
 
-1. Скачиваете библиотеку [PayBoxSdk.aar](https://github.com/PayBox/SDK_Android_input/releases/download/1.0.2_input/payboxsdk.aar)
-2. В Android Studio -&gt; File -&gt; New -&gt; New Module -&gt; Import .jar/.aar Package -&gt; Next, далее в поле File Name указываете путь к файлу
-<br><br><br><br>
+1. Добавьте репозитории Jitpack в ваш build.gradle в конец репозиториев:
+```
+repositories {
+    // ...
+    maven { url "https://jitpack.io" }
+}
+```
+
+2. Добавьте зависимость:
+```
+dependencies {
+    implementation 'com.github.PayBox:SDK_Android_input:1.0.2_input@aar'
+}
+```
 **Инициализация SDK:**
 
         PBHelper.Builder builder = new PBHelper.Builder(appContext,secretKey,merchantId);
