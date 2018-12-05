@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="@string/merchantIdIndex"
+        android:inputType="number"
+        android:numeric="integer"
+        android:title="Merchant Id">
+    </EditTextPreference>
+    <SwitchPreference
+        android:key="@string/autoClearingIndex"
+        android:title="Auto clearing">
+    </SwitchPreference>
+    <EditTextPreference
+        android:key="@string/secretKeyIndex"
+        android:title="Secret key">
+    </EditTextPreference>
+</PreferenceScreen>

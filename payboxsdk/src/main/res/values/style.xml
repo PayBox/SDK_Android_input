@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <!-- Base application theme. -->
+        <style name="SDKWEB" parent="Theme.AppCompat.NoActionBar">
+            <!-- Customize your theme here. -->
+            <item name="windowNoTitle">true</item>
+            <item name="windowActionBar">false</item>
+            <item name="android:windowFullscreen">false</item>
+        </style>
+</resources>

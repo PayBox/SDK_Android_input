@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PayBoxSdk Sample</string>
+    <string name="card_add">Добавление карты</string>
+    <string name="user_id">ID клиента</string>
+    <string name="add">Добавить</string>
+    <string name="show_added_card">Показать добавленные карты</string>
+    <string name="show">Показать</string>
+    <string name="card_remove">Удаление карты</string>
+    <string name="card_id">ID карты</string>
+    <string name="card_pay">Оплата картой</string>
+    <string name="text_empty">Заполните все поля</string>
+    <string-array name="titles">
+        <item>Платежи 1</item>
+        <item>Платежи 2</item>
+        <item>Операции с картой</item>
+    </string-array>
+    <string name="autoClearingIndex">autoClearing</string>
+    <string name="merchantIdIndex">merchantId</string>
+    <string name="secretKeyIndex">secretKey</string>
+</resources>
