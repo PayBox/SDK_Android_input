@@ -21,7 +21,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.github.PayBox:SDK_Android_input:1.0.3.2@aar'
+    implementation project(":payboxsdk")
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.android.support:design:27.1.0'
     implementation 'com.jakewharton:butterknife:8.8.1'
