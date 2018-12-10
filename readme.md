@@ -88,11 +88,11 @@ dependencies {
 Для связи с SDK, имплементируйте в Activity -> “PBListener”:
 1. В методе onCreate() добавьте:
 ```
-        PBCard.getSdk().registerPbListener(this);
+        PBHelper.getSdk().registerPbListener(this);
 ```
 2. В методе onDestroy():
 ```
-        PBCard.getSdk().removePbListener(this);
+        PBHelper.getSdk().removePbListener(this);
 ```
 
 **Для инициализации платежа** (при инициализации с параметром .enableRecurring(int) и передачей userId, карты сохраняются в системе PayBox):
