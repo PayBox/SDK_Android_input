@@ -77,7 +77,6 @@ public class WebActivity extends AppCompatActivity {
             Constants.logMessage("redirect "+url);
             switch (webCommand){
                 case CARDPAY:
-                    Constants.logMessage("redirect "+url);
                     if(url.contains(Constants.SUCCESS)){
                         PBHelper.getSdk().webSubmited(true, webCommand);
                         finish();

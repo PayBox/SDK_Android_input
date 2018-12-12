@@ -101,7 +101,7 @@ public class ServerHelper extends IntentService {
                         initPostRequest(Constants.PB_CARDPAY_MERCHANT(param.get(Constants.MERCHANT_ID)).concat(Constants.PB_CARDINITPAY), param);
                         break;
                     case CAPTURE:
-                        initPostRequest(Constants.PB_MAIN+Constants.PB_DO_CAPTURE_URL, param);
+                        initPostRequest(Constants.PB_DO_CAPTURE_URL, param);
                         break;
                 }
         }
@@ -171,7 +171,7 @@ public class ServerHelper extends IntentService {
             stream.close();
             connection.connect();
             int responseCode=connection.getResponseCode();
-            Constants.logMessage("CODE "+responseCode);
+
             if (responseCode == HttpsURLConnection.HTTP_OK) {
                 String line;
 
