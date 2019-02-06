@@ -449,7 +449,7 @@ public class PBHelper implements PBResultReceiver.Receiver{
     }
 
 
-    public void initNewPayment(@Nullable String orderId, String userId, @NonNull float amount, @NonNull String description, @Nullable HashMap<String, String> extraParams){
+    public void initNewPayment(@Nullable String orderId, @Nullable String userId, @NonNull float amount, @NonNull String description, @Nullable HashMap<String, String> extraParams){
         HashMap<String,String> param = configuration.toHashMap();
         if(orderId!=null){
             param.put(Constants.ORDER_ID,orderId);
@@ -457,7 +457,10 @@ public class PBHelper implements PBResultReceiver.Receiver{
         if(extraParams!=null){
             param.putAll(extraParams);
         }
-        param.put(Constants.PB_USER_ID, userId);
+        if(userId!=null){
+            param.put(Constants.PB_USER_ID, userId);
+        }
+
         param.put(Constants.AMOUNT,String.valueOf(amount));
         param.put(Constants.DESCRIPTION,description);
 
