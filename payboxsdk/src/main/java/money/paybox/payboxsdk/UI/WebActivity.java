@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
 import money.paybox.payboxsdk.PBHelper;
 import money.paybox.payboxsdk.R;
 import money.paybox.payboxsdk.Utils.Constants;
@@ -39,6 +40,7 @@ public class WebActivity extends AppCompatActivity {
         if(intent.hasExtra(URL_EXTRA)) {
             initWeb(intent.getStringExtra(URL_EXTRA));
         }
+
         if(intent.hasExtra(COMMAND_EXTRA)) {
             webCommand = (PBHelper.OPERATION)intent.getExtras().get(COMMAND_EXTRA);
         }
@@ -64,6 +66,7 @@ public class WebActivity extends AppCompatActivity {
         if (url.contains(Constants.CUSTOMER)) {
             this.customer = url.split(Constants.CUSTOMER)[1];
         }
+        Constants.logMessage("LOAD URL "+url);
     }
 
 
@@ -99,9 +102,6 @@ public class WebActivity extends AppCompatActivity {
                     pbsdk_web.loadUrl(url);
                     break;
                 case PAYMENT:
-                    if(url.contains(customer)){
-                        pbsdk_web.loadUrl(url);
-                    }
                     if(url.contains(Constants.SUCCESS)){
                         PBHelper.getSdk().webSubmited(true, webCommand);
                         finish();
@@ -110,7 +110,8 @@ public class WebActivity extends AppCompatActivity {
                         PBHelper.getSdk().webSubmited(false, webCommand);
                         finish();
                     }
-                     break;
+                    pbsdk_web.loadUrl(url);
+                    break;
             }
             return true;
         }

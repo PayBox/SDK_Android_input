@@ -6,15 +6,11 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import money.paybox.payboxsdk.Interfaces.PBListener;
 import money.paybox.payboxsdk.Model.Capture;
 import money.paybox.payboxsdk.Model.Card;
@@ -32,7 +28,7 @@ import money.paybox.payboxsdk.Utils.ServerHelper;
 /**
  * Created by arman on 07.11.17.
  */
-public class PBHelper implements PBResultReceiver.Receiver{
+public class PBHelper implements PBResultReceiver.Receiver {
 
     private static Configuration configuration;
     private JSONObject responseJson;
