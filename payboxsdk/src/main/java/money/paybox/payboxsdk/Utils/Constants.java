@@ -7,7 +7,6 @@ import android.util.Log;
  */
 
 public class Constants {
-    public static final String PB_URL = "http://paybox.money/";
     public static final String PB_MAIN = "https://api.paybox.money/";
     public static final String PB_ENTRY_URL = PB_MAIN+"init_payment.php";
     public static final String PB_STATUS_URL = PB_MAIN+"get_status.php";
