@@ -38,7 +38,7 @@ allprojects {
 2. Добавьте зависимость:
 ```
 dependencies {
-    implementation 'com.github.paybox:sdk_android_input:1.0.3.5'
+    implementation 'com.github.paybox:sdk_android_input:1.0.3.6'
 }
 ```
 ---
