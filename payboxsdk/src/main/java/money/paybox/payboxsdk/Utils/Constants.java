@@ -39,7 +39,7 @@ public class Constants {
     public static final String PB_REDIRECT_URL = "pg_redirect_url";
 
     public enum PBPAYMENT_SYSTEM {
-        KAZPOSTKZT, CYBERPLATKZT, CONTACTKZT, SBERONLINEKZT, ONLINEBANK, CASHBYCODE, KASPIKZT, KAZPOSTYANDEX, SMARTBANKKZT, NURBANKKZT, BANKRBK24KZT, ALFACLICKKZT, FORTEBANKKZT, EPAYWEBKGS, EPAYKGS, HOMEBANKKZT, EPAYKZT, KASSA24, P2PKKB, EPAYWEBKZT
+        NONE, KAZPOSTKZT, CYBERPLATKZT, CONTACTKZT, SBERONLINEKZT, ONLINEBANK, CASHBYCODE, KASPIKZT, KAZPOSTYANDEX, SMARTBANKKZT, NURBANKKZT, BANKRBK24KZT, ALFACLICKKZT, FORTEBANKKZT, EPAYWEBKGS, EPAYKGS, HOMEBANKKZT, EPAYKZT, KASSA24, P2PKKB, EPAYWEBKZT
     }
     public enum PBREQUEST_METHOD {
         GET, POST
@@ -121,6 +121,7 @@ public class Constants {
     public static final String RECURRING_LIFETIME = "pg_recurring_lifetime";
     public static final String SALT = "pg_salt"; //NOT NULL
     public static final String SIG = "pg_sig"; //NOT NULL
+    public static final String TIMEOUT_AFTER_PAYMENT = "pg_timeout_after_payment";
 
     public static void logMessage(String message){
 

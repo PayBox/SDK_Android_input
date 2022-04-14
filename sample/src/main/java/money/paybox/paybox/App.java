@@ -24,7 +24,7 @@ public class App extends Application {
 
     public void initBuilder(String secret, int merchant, boolean clearing){
         builder = new PBHelper.Builder(getApplicationContext(),secret,merchant).
-                setPaymentSystem(Constants.PBPAYMENT_SYSTEM.EPAYWEBKZT).
+                setPaymentSystem(Constants.PBPAYMENT_SYSTEM.NONE).
                 enabledAutoClearing(clearing).enabledTestMode(true).
                 setFeedBackUrl("http://test.paybox.kz/","http://test.paybox.kz/","http://test.paybox.kz/","http://test.paybox.kz/",Constants.PBREQUEST_METHOD.GET);
     }
