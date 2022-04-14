@@ -1,27 +1,42 @@
-apply plugin: 'com.android.library'
-
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 android {
-    compileSdkVersion 27
-    buildToolsVersion '28.0.3'
+    signingConfigs {
+        release {
+        }
+    }
+    compileSdk 28
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 27
+        minSdk 19
+        targetSdk 28
         versionCode 1
         versionName "1.0"
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
-            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    project.afterEvaluate {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    artifact bundleReleaseAar
+                }
+            }
         }
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation files('libs/json.jar')
 }
