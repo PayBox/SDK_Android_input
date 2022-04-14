@@ -38,7 +38,7 @@ allprojects {
 2. Добавьте зависимость:
 ```
 dependencies {
-    implementation 'com.github.paybox:sdk_android_input:1.0.3.6'
+    implementation 'com.github.PayBox:SDK_Android_input:1.0.3.8@aar'
 }
 ```
 ---
@@ -51,7 +51,7 @@ dependencies {
 
 Выбор платежной системы:
 ```
-        builder.setPaymentSystem(Constants.PBPAYMENT_SYSTEM.EPAYWEBKZT);
+        builder.setPaymentSystem(Constants.PBPAYMENT_SYSTEM.NONE);
 ```
 
 
