@@ -2,3 +2,9 @@
 /.gradle
 /.idea
 .DS_Store
+sample/.idea/gradle.xml
+sample/.idea/misc.xml
+sample/.idea/modules.xml
+sample/.idea/modules/sample.iml
+sample/.idea/vcs.xml
+sample/local.properties
