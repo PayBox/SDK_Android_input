@@ -1,5 +1,7 @@
 package money.paybox.payboxsdk;
 
+import static money.paybox.payboxsdk.Utils.Constants.PBPAYMENT_SYSTEM.NONE;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.Handler;
@@ -466,6 +468,7 @@ public class PBHelper implements PBResultReceiver.Receiver {
 
     private void init(HashMap<String,String> param, OPERATION operation){
         param.put(Constants.SALT, Long.toHexString(Double.doubleToLongBits(Math.random())));
+        param.put(Constants.TIMEOUT_AFTER_PAYMENT, "0");
         ServerHelper.startPBConnection(context, operation, resultReceiver, param, configuration.getSECRET_KEY());
     }
 

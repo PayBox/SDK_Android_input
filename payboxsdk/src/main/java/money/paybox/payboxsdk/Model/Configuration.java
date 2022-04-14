@@ -25,7 +25,7 @@ public class Configuration implements Serializable{
     private boolean isTest = false;
     private String USER_PHONE;
     private String USER_EMAIL;
-    private String PAYMENT_SYSTEM = Constants.PBPAYMENT_SYSTEM.EPAYWEBKZT.name();
+    private String PAYMENT_SYSTEM = "";
     private String REQUEST_METHOD = Constants.PBREQUEST_METHOD.GET.name();
     private String currency = Constants.CURRENCY.KZT.name();
     private String SECRET_KEY;
@@ -65,7 +65,7 @@ public class Configuration implements Serializable{
     }
 
     public void setPAYMENT_SYSTEM(Constants.PBPAYMENT_SYSTEM paymentSystem){
-        this.PAYMENT_SYSTEM = paymentSystem.name();
+        this.PAYMENT_SYSTEM = paymentSystem.name().equals("NONE") ? "" : paymentSystem.name();
     }
     public String getPAYMENT_SYSTEM(){
         return PAYMENT_SYSTEM;
