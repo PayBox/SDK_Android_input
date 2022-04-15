@@ -122,6 +122,7 @@ public class Constants {
     public static final String SALT = "pg_salt"; //NOT NULL
     public static final String SIG = "pg_sig"; //NOT NULL
     public static final String TIMEOUT_AFTER_PAYMENT = "pg_timeout_after_payment";
+    public static final String PAYMENT_ROUTE = "pg_payment_route";
 
     public static void logMessage(String message){
 

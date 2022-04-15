@@ -529,7 +529,10 @@ public class PBHelper implements PBResultReceiver.Receiver {
             return this;
         }
 
-
+        public Builder setFrameRequired(boolean isRequired) {
+            configuration.setFrameRequired(isRequired);
+            return this;
+        }
 
         public PBHelper build(){
             if(configuration!=null){
