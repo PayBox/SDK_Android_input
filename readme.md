@@ -3,6 +3,14 @@
 
 PayBox SDK Android - это библиотека позволяющая упростить взаимодействие с API PayBox. Система SDK работает на Android 4.4 и выше
 
+[Скачать демонстрационный APK](https://github.com/PayBox/sample-android-java-sdk/raw/master/sample-java-sdk.apk)
+
+[Исходный код демонстрационного приложения](https://github.com/PayBox/sample-android-java-sdk)
+
+
+<img src="https://github.com/PayBox/sample-android-java-sdk/raw/master/pay_init.GIF" width="25%" height="25%"/>
+
+
 **Описание возможностей:**
 
 - Инициализация платежа
@@ -15,13 +23,15 @@ PayBox SDK Android - это библиотека позволяющая упро
 - Удаление карт
 
 
-**Установка:**
+# **Установка:**
 
-1. Добавьте репозитории Jitpack в ваш build.gradle в конец репозиториев:
+1. Добавьте репозитории Jitpack в ваш build.gradle на уровне проекта в конец репозиториев allprojects:
 ```
-repositories {
-    // ...
-    maven { url "https://jitpack.io" }
+allprojects {
+    repositories {
+        // ...
+        maven { url "https://jitpack.io" }
+    }
 }
 ```
 <br><br>
@@ -31,7 +41,9 @@ dependencies {
     implementation 'com.github.PayBox:SDK_Android_input:1.0.3.9'
 }
 ```
-**Инициализация SDK:**
+---
+
+# **Инициализация SDK:**
 ```
         PBHelper.Builder builder = new PBHelper.Builder(appContext,secretKey,merchantId);
 ```
@@ -57,7 +69,7 @@ dependencies {
 
 Дополнительная информация пользователя, если не указано, то выбор будет предложен на сайте платежного гейта:
 ```
-        builder.setUserInfo(email, 8777*******);
+        builder.setUserInfo(email, 7777*******);
 ```
 
 
@@ -88,20 +100,25 @@ dependencies {
         builder.build();
 ```
 
-**Работа с SDK:**
+---
+
+# **Работа с SDK:**
 
 
-Для связи с SDK, имплементируйте в Activity -> “PBListener”:
-1. В методе onCreate() добавьте:
+## Для связи с SDK
+1. Имплементируйте в Activity -> “PBListener”:
+
+3. В методе onCreate() добавьте:
 ```
         PBHelper.getSdk().registerPbListener(this);
 ```
-2. В методе onDestroy():
+3. В методе onDestroy():
 ```
         PBHelper.getSdk().removePbListener(this);
 ```
 
-**Для инициализации платежа** (при инициализации с параметром .enableRecurring(int) и передачей userId, карты сохраняются в системе PayBox):
+## **Для инициализации платежа**
+(при инициализации с параметром .enableRecurring(int) и передачей userId, карты сохраняются в системе PayBox):
 ```
         PBHelper.getSdk().initNewPayment(orderId, userId, amount, description, extraParams);
 ```
@@ -119,7 +136,7 @@ dependencies {
 ```
 
 
-**Для отмены платежа, по которому не прошел клиринг:**
+## **Для отмены платежа, по которому не прошел клиринг:**
 ```
         PBHelper.getSdk().initCancelPayment(paymentId);
 ```
@@ -129,7 +146,7 @@ dependencies {
 ```
 
 
-**Для проведения возврата платежа, по которому прошел клиринг:**
+## **Для проведения возврата платежа, по которому прошел клиринг:**
 ```
         PBHelper.getSdk().initRevokePayment(paymentId, amount);
 ```
@@ -139,7 +156,7 @@ dependencies {
 ```
 
 
-**Для проведения рекуррентного платежа добавленной картой:**
+## **Для проведения рекуррентного платежа добавленной картой:**
 ```
         PBHelper.getSdk().makeRecurringPayment(amount, orderId, recurringProfileId, description, extraParams);
 ```
@@ -149,7 +166,7 @@ dependencies {
 ```
 
 
-**Для получения статуса платежа:**
+## **Для получения статуса платежа:**
 ```
         PBHelper.getSdk().getPaymentStatus(paymentId);
 ```
@@ -159,7 +176,7 @@ dependencies {
 ```
 
 
-**Для проведения клиринга:**
+## **Для проведения клиринга:**
 ```
         PBHelper.getSdk().initPaymentDoCapture(paymentId);
 ```
@@ -169,7 +186,7 @@ dependencies {
 ```
 
 
-**Для добавления карты:**
+## **Для добавления карты:**
 ```
         PBHelper.getSdk().addCard(userId, postUrl); //postUrl - для обратной связи
 ```
@@ -179,7 +196,7 @@ dependencies {
 ```
 
 
-**Для удаления карт:**
+## **Для удаления карт:**
 ```
         PBHelper.getSdk().removeCard(userId, cardId);
 ```
@@ -189,7 +206,7 @@ dependencies {
 ```
 
 
-**Для отображения списка карт:**
+## **Для отображения списка карт:**
 ```
         PBHelper.getSdk().getCards(userId);
 ```
@@ -198,7 +215,7 @@ dependencies {
         public void onCardListed(ArrayList&lt;Card&gt; cards)
 ```
 
-**Для создания платежа добавленной картой:**
+## **Для создания платежа добавленной картой:**
 ```
         PBHelper.getSdk().initCardPayment(amount, userId, cardId, orderId, description, extraParams);
 ```
@@ -207,7 +224,7 @@ dependencies {
         public void onCardPayInited(Response response)
 ```
 
-**Для проведения платежа добавленной картой:**
+## **Для проведения платежа добавленной картой:**
 ```
         PBHelper.getSdk().payWithCard(paymentId); //paymentId
 ```
@@ -216,8 +233,9 @@ dependencies {
         public void onCardPaid(Response response)
         
 ```
+---
 
-**Описание некоторых входных параметров**
+# **Описание некоторых входных параметров**
 
 1. orderId - Идентификатор платежа в системе продавца. Рекомендуется поддерживать уникальность этого поля.
 2. amount - Сумма платежа
