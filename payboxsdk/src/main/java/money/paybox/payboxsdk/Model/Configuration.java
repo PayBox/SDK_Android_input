@@ -32,6 +32,7 @@ public class Configuration implements Serializable{
     private boolean AUTO_CLEARING = false;
     public String successUrl = Constants.PB_MAIN+Constants.SUCCESS;
     public String failureUrl = Constants.PB_MAIN+Constants.FAILURE;
+    private boolean isFrameRequired = false;
 
 
 
@@ -178,7 +179,9 @@ public class Configuration implements Serializable{
         return SECRET_KEY;
     }
 
+    public void setFrameRequired(boolean isRequired) { this.isFrameRequired = isRequired; }
 
+    public boolean getFrameRequired() { return this.isFrameRequired; }
 
 
     private boolean isEmpty(String text){
@@ -205,6 +208,9 @@ public class Configuration implements Serializable{
         if(!isEmpty(getCAPTURE_URL())||!isEmpty(getREFUND_URL())||!isEmpty(getRESULT_URL())||!isEmpty(getCHECK_URL())) {
             map.put(Constants.REQUEST_METHOD, getRequestMethod());
         }
+        if(getFrameRequired()) {
+            map.put(Constants.PAYMENT_ROUTE, "frame");
+        }
         return map;
     }
     public HashMap<String, String> toHashMap(){
@@ -228,6 +234,10 @@ public class Configuration implements Serializable{
         if(!isEmpty(getPAYMENT_SYSTEM())){
             map.put(Constants.PAYMENT_SYSTEM, getPAYMENT_SYSTEM());
         }
+        if(getFrameRequired()) {
+            map.put(Constants.PAYMENT_ROUTE, "frame");
+        }
+
         map.put(Constants.PB_CURRENCY, getCurrency());
         map.put(Constants.TESTING_MODE, String.valueOf(isTest()));
         map.put(Constants.REQUEST_METHOD, getRequestMethod());

@@ -28,7 +28,7 @@ repositories {
 2. Добавьте зависимость:
 ```
 dependencies {
-    implementation 'com.github.PayBox:SDK_Android_input:1.0.3.8@aar'
+    implementation 'com.github.PayBox:SDK_Android_input:1.0.3.9'
 }
 ```
 **Инициализация SDK:**
@@ -46,6 +46,12 @@ dependencies {
 Выбор валюты платежа:
 ```
         builder.setPaymentCurrency(Constants.CURRENCY.KZT);
+```
+
+
+Выбор фрейма вместо платежной страницы:
+```
+        builder.setFrameRequired(true); //по умолчанию false
 ```
 
 
