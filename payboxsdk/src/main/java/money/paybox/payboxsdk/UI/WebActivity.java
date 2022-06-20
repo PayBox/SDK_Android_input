@@ -1,5 +1,9 @@
 package money.paybox.payboxsdk.UI;
 
+import static money.paybox.payboxsdk.PBHelper.OPERATION.CARDADD;
+import static money.paybox.payboxsdk.PBHelper.OPERATION.CARDPAY;
+import static money.paybox.payboxsdk.PBHelper.OPERATION.PAYMENT;
+
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -78,41 +82,21 @@ public class WebActivity extends AppCompatActivity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             Constants.logMessage("redirect "+url);
-            switch (webCommand){
-                case CARDPAY:
-                    if(url.contains(Constants.SUCCESS)){
-                        PBHelper.getSdk().webSubmited(true, webCommand);
-                        finish();
-                    } else
-                    if (url.contains(Constants.FAILURE)){
-                        PBHelper.getSdk().webSubmited(false, webCommand);
-                        finish();
-                    }
-                    pbsdk_web.loadUrl(url);
-                    break;
-                case CARDADD:
-                    if(url.contains(Constants.SUCCESS)){
-                        PBHelper.getSdk().webSubmited(true, webCommand);
-                        finish();
-                    } else
-                    if(url.contains(Constants.FAILURE)){
-                        PBHelper.getSdk().webSubmited(false, webCommand);
-                        finish();
-                    }
-                    pbsdk_web.loadUrl(url);
-                    break;
-                case PAYMENT:
-                    if(url.contains(Constants.SUCCESS)){
-                        PBHelper.getSdk().webSubmited(true, webCommand);
-                        finish();
-                    }
-                    if(url.contains(Constants.FAILURE)){
-                        PBHelper.getSdk().webSubmited(false, webCommand);
-                        finish();
-                    }
-                    pbsdk_web.loadUrl(url);
-                    break;
+
+            if (webCommand == CARDPAY || webCommand == CARDADD || webCommand == PAYMENT) {
+                if(url.startsWith(Constants.PB_MAIN + Constants.SUCCESS)){
+                    PBHelper.getSdk().webSubmited(true, webCommand);
+                    finish();
+                }
+
+                if (url.startsWith(Constants.PB_MAIN + Constants.FAILURE)){
+                    PBHelper.getSdk().webSubmited(false, webCommand);
+                    finish();
+                }
+
+                pbsdk_web.loadUrl(url);
             }
+
             return true;
         }
     }
